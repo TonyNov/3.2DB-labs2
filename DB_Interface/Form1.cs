@@ -22,19 +22,12 @@ namespace DB_Interface
 		private void button1_Click(object sender, EventArgs e)
 		{
 			string connStr = "server=localhost;user=root;database=mydb;password=root;";
-			// создаём объект для подключения к БД
 			MySqlConnection conn = new MySqlConnection(connStr);
-			// устанавливаем соединение с БД
 			conn.Open();
-			// запрос
 			string sql = "SELECT * FROM магазины";
-			// объект для выполнения SQL-запроса
 			MySqlCommand command = new MySqlCommand(sql, conn);
-			// выполняем запрос и получаем ответ
 			string name = command.ExecuteScalar().ToString();
-			// выводим ответ в консоль
-			Console.WriteLine(name);
-			// закрываем соединение с БД
+			this.Text = name;
 			conn.Close();
 		}
 	}
